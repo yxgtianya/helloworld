@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import unittest
 from appium import webdriver
+import page
 import time
 
 class Apptest(unittest.TestCase):
@@ -28,12 +29,13 @@ class Apptest(unittest.TestCase):
 	def test_1(self):
 		print(self.driver.get_window_size())
 		time.sleep(4)
-		self.driver.swipe(start_x=1000, start_y=1200, end_x =500, end_y=1200, duration=500)
+		link_page = page.LinkPage(self.driver)
+		link_page.swipertl()
 		time.sleep(1)
-		self.driver.swipe(start_x=1000, start_y=1200, end_x =500, end_y=1200, duration=500)
+		link_page.swipertl()
 		time.sleep(1)
-		start = self.driver.find_element_by_id('cn.buding.martin:id/start')
-		start.click()
+		begin_page = page.BeginPage(self.driver)
+		begin_page.click_begin_button()
 		time.sleep(1)
 		print self.driver.current_activity
 
