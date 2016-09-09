@@ -1,4 +1,4 @@
-#from element import BasePageElement
+from element import BasePageElement
 from locators import BeginPageLocators
 
 class BasePage(object):
