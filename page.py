@@ -1,3 +1,4 @@
+#coding:utf-8
 from element import BasePageElement
 from locators import BeginPageLocators
 
