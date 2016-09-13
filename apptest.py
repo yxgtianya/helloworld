@@ -3,6 +3,7 @@ import unittest
 from appium import webdriver
 import page
 import time
+import HTMLTestRunner
 
 class Apptest(unittest.TestCase):
 	def setUp(self):
@@ -10,8 +11,10 @@ class Apptest(unittest.TestCase):
 		desired_caps['platformName'] = 'Android'
 		desired_caps['platformVersion'] = "6.0.1"
 		desired_caps['deviceName'] = 'Nexus6'
+		#不重新签名
 		desired_caps['noSign'] = 'true'
 		desired_caps['app'] = ('C:\Users\yxg\Desktop\\appTest\helloworld\\test.apk')
+		#测试结束卸载app
 		desired_caps['fullReset'] = 'true'
 		#desired_caps['unicodeKeyboard'] = 'true'
 		#desired_caps['appPackage'] = 'cn.buding.martin'
@@ -20,7 +23,7 @@ class Apptest(unittest.TestCase):
 		self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 
 	def tearDown(self):
-		#self.driver.close_app()
+		#卸载安装的app
 		self.driver.remove_app('io.appium.unlock')
 		self.driver.remove_app('io.appium.settings')
 		self.driver.remove_app('io.appium.android.im')
@@ -45,4 +48,9 @@ def suite():
 	return suite
 
 if __name__== '__main__':
-	unittest.main(defaultTest = 'suite')
+	filename = 'd:\\result.html'
+	fp = file(filename, 'wb')
+	runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Test result of cn.buding.martin', 
+	description='Test_Report')
+	#unittest.main(defaultTest = 'suite')]
+	runner.run(suite())
