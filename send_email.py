@@ -34,7 +34,6 @@ message.attach(MIMEText(message_html, 'html', 'utf-8'))
 att1 = MIMEText(open('d:\\result.html', 'rb').read(), 'base64', 'utf-8')
 att1["Content-Type"] = 'application/octet-stream'
 att1["Content-Disposition"] = 'attachment; filename="result.html"'
-att1["Content-Disposition"] = 'attachment; filename="result.html"'
 message.attach(att1)
 
 def send_report():

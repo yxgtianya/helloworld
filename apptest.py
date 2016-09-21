@@ -33,7 +33,7 @@ class Apptest(unittest.TestCase):
 
 	def test_1(self):
 		print(self.driver.get_window_size())
-		sleep(4)
+		sleep(6)
 		link_page = page.LinkPage(self.driver)
 		link_page.swipertl()
 		sleep(1)
